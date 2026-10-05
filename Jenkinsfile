@@ -4,31 +4,31 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                 git branch: 'main', url: 'https://github.com/AdityaGarasangi/Jenkins-CICD-Pipeline-Nodejs.git'
+                 git branch: 'main', url: 'https://github.com/Vishnuka144/Jenkins-CICD-Pipeline-Nodejs.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'npm test'
+                bat 'npm test'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t jenkins-node-app .'
+                bat 'docker build -t jenkins-node-app .'
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 3000:3000 --name jenkins-node-app jenkins-node-app'
+                bat 'docker run -d -p 3000:3000 --name jenkins-node-app jenkins-node-app'
             }
         }
     }
